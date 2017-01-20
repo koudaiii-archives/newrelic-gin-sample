@@ -1,0 +1,28 @@
+sudo: required
+services:
+  - docker
+language: go
+go:
+  - '1.7'
+env:
+  global:
+    - REPO=quay.io/wantedly/people-go
+    - K8S_VERSION=v1.4.5
+    - BRANCH=$(echo $TRAVIS_BRANCH | sed -e "s,/,_,g;")
+    - TAG=$BRANCH-${TRAVIS_COMMIT::8}
+    - DEPLOYMENT_NAME=${REPO##*/}
+    - NAMESPACE=${DEPLOYMENT_NAME}
+install:
+  - sudo add-apt-repository ppa:masterminds/glide -y
+  - sudo apt-get update -q
+  - sudo apt-get install glide -y
+  - mkdir -p $GOPATH/bin
+script:
+  - script/ci-build
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./script/ci-deploy
+  on:
+    all_branches: true
+
