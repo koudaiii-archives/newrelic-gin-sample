@@ -1,5 +1,5 @@
 hash: 9e507bc422975e80280c0acf7840c8b688855ae5cd89df0392d689c246020f6a
-updated: 2017-01-20T10:41:49.850070696+09:00
+updated: 2017-01-20T14:04:59.033260075+09:00
 imports:
 - name: github.com/gin-gonic/gin
   version: e2212d40c62a98b388a5eb48ecbdcf88534688ba
@@ -17,7 +17,12 @@ imports:
 - name: github.com/newrelic/go-agent
   version: f319f47da54305f3091d7f19306f121192acc0c2
   subpackages:
+  - _integrations/nrgin/v1
   - internal
+  - internal/jsonx
+  - internal/logger
+  - internal/sysinfo
+  - internal/utilization
 - name: golang.org/x/net
   version: f315505cf3349909cdf013ea56690da34e96a451
   subpackages:
