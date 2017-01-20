@@ -1,0 +1,10 @@
+package: github.com/koudaiii/newrelic-gin-sample
+import:
+- package: github.com/gin-gonic/gin
+  version: ^1.1.4
+- package: github.com/newrelic/go-agent
+  version: PR-gin
+  subpackages:
+  - internal
+- package: gopkg.in/gin-gonic/gin.v1
+  version: ^1.1.4
