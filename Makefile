@@ -10,6 +10,23 @@ LDFLAGS := -ldflags="-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(R
 $(BIN): $(SRCS)
 	go build -a -tags netgo -installsuffix netgo $(LDFLAGS) -o $(BIN)
 
+# make deps
+.PHONY: deps
+deps: glide
+	glide install
+
+# make glide
+.PHONY: glide
+glide:
+ifeq ($(shell command -v glide 2> /dev/null),)
+	curl https://glide.sh/get | sh
+endif
+
+# make update-deps
+.PHONY: update-deps
+update-deps: glide
+	glide update
+
 # make install
 .PHONY: install
 install:
