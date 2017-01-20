@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -eu
+set -o pipefail
+
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+
+echo "make install"
+make install
+
+echo "Testing..."
+make test
+
+echo "Building Binary..."
+GOOS=linux GOARCH=amd64 make
+
+echo "docker build -t ${REPO}:${TAG}"
+docker build -t $REPO:$TAG .
+
+echo "docker push ${REPO}:${TAG}"
+docker push $REPO:$TAG
+
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+  echo "docker tag ${REPO}:${TAG} ${REPO}:latest"
+  docker tag $REPO:$TAG $REPO:latest
+
+  echo "docker push ${REPO}:latest"
+  docker push $REPO:latest
+fi
