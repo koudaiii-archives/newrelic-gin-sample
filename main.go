@@ -10,15 +10,19 @@ import (
 )
 
 func main() {
-	cfg := newrelic.NewConfig("Gin App", os.Getenv("NEW_RELIC_LICENSE_KEY"))
-	cfg.Logger = newrelic.NewDebugLogger(os.Stdout)
-	app, err := newrelic.NewApplication(cfg)
-	if nil != err {
-		fmt.Println(err)
-		os.Exit(1)
-	}
 	r := gin.Default()
-	r.Use(nrgin.Middleware(app))
+	if os.Getenv("NEWRELIC_LICENSE_KEY") != "" {
+		cfg := newrelic.NewConfig("Gin App", os.Getenv("NEWRELIC_LICENSE_KEY"))
+		cfg.Logger = newrelic.NewDebugLogger(os.Stdout)
+		app, err := newrelic.NewApplication(cfg)
+		if nil != err {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+
+		r.Use(nrgin.Middleware(app))
+	}
+
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
