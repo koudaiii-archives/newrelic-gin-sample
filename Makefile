@@ -1,4 +1,4 @@
-NAME     := demo
+NAME     := newrelic-gin-sample
 BIN      := bin/$(NAME)
 VERSION  := v0.1.0
 REVISION := $(shell git rev-parse --short HEAD)
