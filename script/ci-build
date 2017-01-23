@@ -3,7 +3,7 @@
 set -eu
 set -o pipefail
 
-docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" quay.io
 
 echo "make install"
 make install
