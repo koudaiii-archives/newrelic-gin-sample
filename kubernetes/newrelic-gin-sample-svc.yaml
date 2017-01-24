@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newrelic-gin-sample
+  namespace: newrelic-gin-sample
+  labels:
+    name: newrelic-gin-sample
+    role: web
+spec:
+  ports:
+  - port: 8080 # Service opened port.
+    protocol: TCP
+    targetPort: 8080 # Endpoint of Pod
+  selector:
+    name: newrelic-gin-sample
+    role: web
+  type: LoadBalancer
