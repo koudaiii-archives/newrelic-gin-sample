@@ -1,5 +1,5 @@
 hash: 9e507bc422975e80280c0acf7840c8b688855ae5cd89df0392d689c246020f6a
-updated: 2017-01-20T14:04:59.033260075+09:00
+updated: 2017-01-27T15:53:00.143298337+09:00
 imports:
 - name: github.com/gin-gonic/gin
   version: e2212d40c62a98b388a5eb48ecbdcf88534688ba
@@ -15,7 +15,7 @@ imports:
 - name: github.com/mattn/go-isatty
   version: 30a891c33c7cde7b02a981314b4228ec99380cca
 - name: github.com/newrelic/go-agent
-  version: f319f47da54305f3091d7f19306f121192acc0c2
+  version: bb868b52cb3f7eebeec20fdb485ab7d4b126cdc4
   subpackages:
   - _integrations/nrgin/v1
   - internal
@@ -28,7 +28,7 @@ imports:
   subpackages:
   - context
 - name: golang.org/x/sys
-  version: 8f0908ab3b2457e2e15403d3697c9ef5cb4b57a9
+  version: d75a52659825e75fff6158388dddc6a5b04f9ba5
   subpackages:
   - unix
 - name: gopkg.in/gin-gonic/gin.v1
@@ -36,5 +36,5 @@ imports:
 - name: gopkg.in/go-playground/validator.v8
   version: c193cecd124b5cc722d7ee5538e945bdb3348435
 - name: gopkg.in/yaml.v2
-  version: 53feefa2559fb8dfa8d81baad31be332c97d6c77
+  version: 4c78c975fe7c825c6d1466c42be594d1d6f3aba6
 testImports: []
